@@ -128,4 +128,22 @@ document.addEventListener('DOMContentLoaded', function () {
         const walk = (x - startX) * 2;
         grid.scrollLeft = scrollLeft - walk;
     });
+    document.querySelectorAll('.category-card').forEach(card => {
+        card.addEventListener('click', () => {
+            const categoryTitle = card.querySelector('.category-title').textContent;
+            console.log(`Category clicked: ${categoryTitle}`);
+            // Add your navigation or other functionality here
+        });
+    });
+
+    // Optional: Add loading animation for images
+    document.querySelectorAll('.category-image').forEach(img => {
+        img.addEventListener('load', () => {
+            img.style.opacity = '1';
+        });
+        
+        img.addEventListener('error', () => {
+            img.src = 'path/to/placeholder-image.jpg'; // Add fallback image path
+        });
+    });
 });
