@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fashion Store</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav class="top-nav">
+            <div class="logo">
+                <img src="/api/placeholder/50/50" alt="Store Logo">
+            </div>
+            <div class="nav-links">
+                <a href="#" class="active">APPAREL</a>
+                <a href="#">BEST SELLERS</a>
+                <a href="#">NEW RELEASES</a>
+                <a href="#">TRENDING</a>
+                <a href="#">COLLECTIONS</a>
+                <a href="#">PROMOS</a>
+                <a href="#">MEMBERSHIP</a>
+            </div>
+            <div class="nav-icons">
+                <a href="#" class="search-icon"><i class="fas fa-search"></i></a>
+                <a href="#" class="wishlist-icon"><i class="far fa-heart"></i></a>
+                <a href="#" class="cart-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">0</span>
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="slider-section fade-in">
+            <div class="slider-container">
+                <div class="slide active">
+                    <img src="/api/placeholder/1200/400" alt="Member Promotion">
+                    <div class="slide-content">
+                        <h2>MEMBER WEDNESDAYS</h2>
+                        <p>Exclusive deals for our valued members</p>
+                        <button class="btn btn-primary">Join Now</button>
+                    </div>
+                </div>
+            </div>
+            <button class="slide-arrow prev-arrow"><i class="fas fa-chevron-left"></i></button>
+            <button class="slide-arrow next-arrow"><i class="fas fa-chevron-right"></i></button>
+        </section>
+
+        <section class="drops-section fade-in">
+            <h2 class="section-title">DROP OF THE DAY</h2>
+            <div class="drops-container">
+                <div class="drops-grid">
+                    <div class="drop-card">
+                        <img src="/api/placeholder/300/400" alt="Drop 1">
+                        <div class="drop-info">
+                            <h3>Limited Edition Collection</h3>
+                            <p>Available Now</p>
+                            <button class="btn btn-primary">Shop Now</button>
+                        </div>
+                    </div>
+                    <!-- More drop cards -->
+                </div>
+            </div>
+        </section>
+
+        <section class="best-sellers fade-in">
+            <h2 class="section-title">BEST SELLERS</h2>
+            <div class="product-grid">
+                <div class="product-card">
+                    <img src="/api/placeholder/300/300" alt="Product">
+                    <div class="product-info">
+                        <h3>Premium T-Shirt</h3>
+                        <p class="product-price">$29.99</p>
+                        <button class="btn btn-primary">Add to Cart</button>
+                    </div>
+                </div>
+                <!-- More product cards -->
+            </div>
+        </section>
+
+        <section class="categories fade-in">
+            <h2 class="section-title">SHOP BY CATEGORY</h2>
+            <div class="category-grid">
+                <div class="category-card">
+                    <img src="/api/placeholder/300/300" alt="Category">
+                    <div class="category-title">
+                        <h3>OVERSIZED T-SHIRTS</h3>
+                    </div>
+                </div>
+                <!-- More category cards -->
+            </div>
+        </section>
