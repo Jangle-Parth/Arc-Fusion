@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fashion Store</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>About Us</title>
     <style>
         :root {
             --primary-purple: #7B6CF6;
@@ -22,26 +23,22 @@
             --shadow-md: 0 4px 6px rgba(123, 108, 246, 0.15);
             --shadow-lg: 0 8px 16px rgba(123, 108, 246, 0.2);
         }
-        /* General Styles */
-        body {
-            font-family: 'Inter', sans-serif;
+        * {
             margin: 0;
             padding: 0;
-            color: #333;        
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', sans-serif;      
             line-height: 1.6;
             background-color: var(--light-purple);
             color: var(--text-dark);
         }
-        
-        h2,
-        h3 {
-            margin: 0;
-        }
+       
         header {
             background-color: var(--white);
             box-shadow: var(--shadow-md);
         }
-
         .top-nav {
             display: flex;
             justify-content: space-between;
@@ -51,16 +48,13 @@
             margin: 0 auto;
             background: var(--white);
         }
-
         .logo img {
             height: 40px;
         }
-
         .nav-links {
             display: flex;
             gap: 2rem;
         }
-
         .nav-links a {
             text-decoration: none;
             color: var(--text-light);
@@ -70,13 +64,11 @@
             padding: 0.5rem 1rem;
             border-radius: 8px;
         }
-
         .nav-links a.active,
         .nav-links a:hover {
             color: var(--primary-purple);
             background-color: var(--light-purple);
         }
-
         .nav-icons {
             display: flex;
             gap: 1.5rem;
@@ -92,38 +84,160 @@
         .nav-icons a:hover {
             color: var(--primary-purple);
         }
-
-        /* Product Cards */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 20px;
-            padding: 20px;
-        }
-        
-        .card {
-            background-color: #fff;
-            border: 1px solid #e1e1e1;
+        /* Buttons */
+        .btn {
+            padding: 0.75rem 1.5rem;
             border-radius: 8px;
-            padding: 15px;
-            text-align: center;
+            border: none;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
         }
-        
-        .card img {
-            max-width: 100%;
-            border-radius: 8px;
+
+        .btn-primary {
+            background: var(--gradient-purple);
+            color: var(--white);
         }
-        
-        .card h3 {
-            margin: 10px 0;
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
         }
-        
-        .card p {
-            margin: 5px 0;
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu-toggle {
+                display: block;
+                background: none;
+                border: none;
+                color: var(--text-light);
+                font-size: 1.5rem;
+                cursor: pointer;
+            }
+            
+            .nav-links.show {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--white);
+                padding: 1rem;
+                box-shadow: var(--shadow-md);
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+            
+            .slide-content h2 {
+                font-size: 1.8rem;
+            }
+        }
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease-out forwards;
         }
 
 
-        /* Footer */
+
+        /* Main Content */
+        
+     
+
+        .about-us-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+        }
+
+        .about-us {
+        background-color: #ffffff;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        padding: 30px;
+        text-align: center;
+        }
+
+        .about-us h1 {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+        }
+
+        .about-us h2 {
+        font-size: 2rem;
+        margin: 20px 0;
+        }
+
+        .about-us p {
+        line-height: 1.6;
+        margin-bottom: 20px;
+        }
+
+        .our-story {
+        margin: 40px 0;
+        }
+
+        .friends-container {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        flex-wrap: wrap;
+        }
+
+        .friend {
+        background-color: #e9ecef;
+        border-radius: 10px;
+        padding: 10px;
+        text-align: center;
+        transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .friend img {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        margin-bottom: 10px;
+        }
+
+        .friend:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .join-us {
+        margin: 40px 0;
+        }
+
+        .btn-join {
+        display: inline-block;
+        background-color: #007bff;
+        color: #ffffff;
+        padding: 10px 20px;
+        border-radius: 5px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: background-color 0.3s;
+        }
+
+        .btn-join:hover {
+        background-color: #0056b3;
+        }
+
+      
+
+        
+        /* Footer styles and other CSS rules can go here */
         .footer-container {
             background-color: var(--light-purple);
             padding: 0 0 2rem 0;
@@ -155,7 +269,6 @@
         .customer-count span {
             font-weight: 700;
         }
-
         .footer-content {
             max-width: 1200px;
             margin: 0 auto;
@@ -305,15 +418,12 @@
             }
         }
     </style>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
-
 <body>
     <header>
         <nav class="top-nav">
             <div class="logo">
-                <img src="assets/images/logo.png" alt="Store Logo" class="logo-img">
+                <img src="assets/images/logo.png" alt="Store Logo">
             </div>
             <div class="nav-links">
                 <a href="#" class="active">APPAREL</a>
@@ -335,44 +445,44 @@
         </nav>
     </header>
 
-    <main>
-        <section>
-            <h2 style="text-align: center; margin: 20px 0;">Featured Products</h2>
-            <div class="grid">
-                <div class="card">
-                    <img src="assets\images\categories\image_3.png" alt="T-Shirt 1" class="mb-4"/>
-                    <h3 class="font-bold">Graphic Tee 1</h3>
-                    <p>Price: ₹ 999</p>
-                </div>
-                <div class="card">
-                    <img src="assets\images\categories\image_4.png" alt="T-Shirt 2" class="mb-4"/>
-                    <h3 class="font-bold">Graphic Tee 2</h3>
-                    <p>Price: ₹ 1,199</p>
-                </div>
-                <div class="card">
-                    <img src="assets\images\categories\image_5.png" alt="T-Shirt 3" class="mb-4"/>
-                    <h3 class="font-bold">Graphic Tee 3</h3>
-                    <p>Price: ₹ 1,299</p>
-                </div>
-                <div class="card">
-                    <img src="assets\images\categories\image_6.png" alt="T-Shirt 4" class="mb-4"/>
-                    <h3 class="font-bold">Graphic Tee 4</h3>
-                    <p>Price: ₹ 1,499</p>
-                </div>
+    <main class="about-us-container">
+        <section class="about-us">
+          <h1>About Us</h1>
+          <p>Welcome to <strong>Your Brand Name</strong>, a homegrown Indian brand dedicated to providing quality apparel that blends tradition with modernity.</p>
+      
+          <div class="our-story">
+            <h2>Our Story</h2>
+            <p>Our journey began with three friends who shared a passion for fashion and entrepreneurship...</p>
+            <div class="friends-container">
+              <div class="friend">
+                <img src="assets/images/founders/anshul.png" alt="Friend 1 - Anshul">
+                <p><strong>Anshul</strong><br>Co-Founder</p>
+              </div>
+              <div class="friend">
+                <img src="assets/images/founders/parth.png" alt="Friend 2 - Parth">
+                <p><strong>Parth</strong><br>Co-Founder</p>
+              </div>
+              <div class="friend">
+                <img src="assets/images/founders/rhythm.png" alt="Friend 3 - Rhythm">
+                <p><strong>Rhythm</strong><br>Co-Founder</p>
+              </div>
             </div>
+          </div>
+      
+          <div class="join-us">
+            <h2>Join Us</h2>
+            <p>We invite you to be a part of our journey...</p>
+            <a href="#" class="btn-join">Join Us Now</a>
+          </div>
         </section>
-    </main>
+      </main>
+      
 
     <footer class="footer-container">
-        <!-- Brand Banner -->
         <div class="brand-banner">
             <h2>HOMEGROWN INDIAN BRAND</h2>
-            
         </div>
-
-        <!-- Footer Content -->
         <div class="footer-content">
-            <!-- Help Section -->
             <div class="footer-column">
                 <h3>NEED HELP</h3>
                 <ul>
@@ -382,52 +492,44 @@
                     <li><a href="#">FAQs</a></li>
                     <li><a href="#">My Account</a></li>
                 </ul>
-                
             </div>
-
-            <!-- Company Section -->
             <div class="footer-column">
                 <h3>COMPANY</h3>
                 <ul>
-                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="#">About Us</a></li>
                     <li><a href="#">Careers</a></li>
                     <li><a href="#">Gift Vouchers</a></li>
                     <li><a href="#">Community Initiatives</a></li>
                     <li><a href="#">Souled Army</a></li>
                 </ul>
             </div>
-
-            <!-- More Info Section -->
             <div class="footer-column">
                 <h3>MORE INFO</h3>
                 <ul>
-                    <li><a href="#">T&C</a></li>
+                    <li><a href="#">Terms & Conditions</a></li>
                     <li><a href="#">Privacy Policy</a></li>
-                    <li><a href="#">Sitemap</a></li>
-                    <li><a href="#">Blogs</a></li>
+                    <li><a href="#">Delivery Info</a></li>
+                    <li><a href="#">Payment Options</a></li>
                 </ul>
             </div>
-
-            
-
-
-        <!-- Social Media Section -->
-        <div class="social-section">
-            <p>Follow Us:</p>
-            <div class="social-icons">
-                <a href="https://www.instagram.com/arcfusionindia/" class="social-icon instagram">
-                    <i class="fab fa-instagram"></i>
-                </a>
-                
-                <a href="#" class="social-icon twitter">
-                    <i class="fab fa-twitter"></i>
-                </a>
-                <a href="https://www.youtube.com/@ArcFusionIndia2024" class="social-icon youtube">
-                    <i class="fab fa-youtube"></i>
-                </a>
+            <div class="social-section">
+                <p>Follow Us:</p>
+                <div class="social-icons">
+                   
+                    <a href="https://www.instagram.com/arcfusionindia/" class="social-icon instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    
+                    <a href="#" class="social-icon twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="https://www.youtube.com/@ArcFusionIndia2024" class="social-icon youtube">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
             </div>
         </div>
+
     </footer>
 </body>
-
 </html>
