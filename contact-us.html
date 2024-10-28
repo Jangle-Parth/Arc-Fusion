@@ -1,0 +1,1153 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Your Brand</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+    :root {
+        --primary-purple: #7B6CF6;
+        --light-purple: #F3F1FF;
+        --dark-purple: #4A3F9F;
+        --accent-purple: #9D8DF7;
+        --text-dark: #2D2A45;
+        --text-light: #6E6B85;
+        --white: #FFFFFF;
+        --success-green: #4CAF50;
+        --warning-orange: #FF9800;
+        --error-red: #F44336;
+        --gradient-purple: linear-gradient(135deg, #7B6CF6 0%, #9D8DF7 100%);
+        --shadow-sm: 0 2px 4px rgba(123, 108, 246, 0.1);
+        --shadow-md: 0 4px 6px rgba(123, 108, 246, 0.15);
+        --shadow-lg: 0 8px 16px rgba(123, 108, 246, 0.2);
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Inter', sans-serif;
+        line-height: 1.6;
+        background-color: var(--light-purple);
+        color: var(--text-dark);
+    }
+
+    
+    /* Header Styles */
+    header {
+        background-color: var(--white);
+        box-shadow: var(--shadow-md);
+    }
+
+    .top-nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 2rem;
+        max-width: 1400px;
+        margin: 0 auto;
+        background: var(--white);
+    }
+
+    .logo img {
+        height: 40px;
+    }
+
+    .nav-links {
+        display: flex;
+        gap: 2rem;
+    }
+
+    .nav-links a {
+        text-decoration: none;
+        color: var(--text-light);
+        font-weight: 500;
+        font-size: 0.9rem;
+        transition: all 0.3s ease;
+        padding: 0.5rem 1rem;
+        border-radius: 8px;
+    }
+
+    .nav-links a.active,
+    .nav-links a:hover {
+        color: var(--primary-purple);
+        background-color: var(--light-purple);
+    }
+
+    .nav-icons {
+        display: flex;
+        gap: 1.5rem;
+    }
+
+    .nav-icons a {
+        color: var(--text-light);
+        font-size: 1.2rem;
+        transition: color 0.3s ease;
+        position: relative;
+    }
+
+    .nav-icons a:hover {
+        color: var(--primary-purple);
+    }
+
+
+    /* Contact Page Container */
+    .contact-page-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+    }
+
+    /* Hero Section */
+    .contact-hero {
+        text-align: center;
+        padding: 3rem 0;
+        background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)),
+                    url('assets/images/hero-bg.jpg');
+        background-size: cover;
+        background-position: center;
+        margin-bottom: 3rem;
+    }
+
+    .contact-hero h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        color: var(--primary-color);
+    }
+
+    .contact-intro {
+        font-size: 1.2rem;
+        color: var(--secondary-color);
+    }
+
+    /* Contact Sections Grid */
+    .contact-sections-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-bottom: 3rem;
+    }
+
+    /* Contact Section */
+    .contact-section {
+        background-color: var(--background-color);
+        padding: 2rem;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .contact-section h2 {
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
+        color: var(--primary-color);
+    }
+
+    /* Contact Cards */
+    .contact-cards-container {
+        display: grid;
+        gap: 1.5rem;
+    }
+
+    .contact-card {
+        padding: 1.5rem;
+        background-color: var(--gray-light);
+        border-radius: 8px;
+        transition: transform var(--transition-speed);
+    }
+
+    .contact-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .contact-card i {
+        font-size: 2rem;
+        color: var(--accent-color);
+        margin-bottom: 1rem;
+    }
+
+    .contact-card h3 {
+        margin-bottom: 1rem;
+        color: var(--primary-color);
+    }
+
+    /* Contact Form */
+    .contact-form {
+        display: grid;
+        gap: 1.5rem;
+    }
+
+    .form-group {
+        display: grid;
+        gap: 0.5rem;
+    }
+
+    .form-group label {
+        font-weight: 500;
+        color: var(--primary-color);
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        padding: 0.8rem;
+        border: 1px solid var(--gray-medium);
+        border-radius: 4px;
+        font-size: 1rem;
+        transition: border-color var(--transition-speed);
+        width: 100%;
+    }
+    
+    .form-group textarea {
+        min-height: 150px;
+        resize: vertical;
+    }
+    
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+        outline: none;
+        border-color: var(--accent-color);
+    }
+    
+    .btn-submit {
+        background-color: var(--accent-color);
+        color: white;
+        padding: 1rem 2rem;
+        border: none;
+        border-radius: 4px;
+        font-size: 1rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: background-color var(--transition-speed);
+    }
+    
+    .btn-submit:hover {
+        background-color: #e6365f;
+    }
+    
+    /* FAQ Section */
+    .faq-container {
+        display: grid;
+        gap: 1rem;
+    }
+    
+    .faq-item {
+        border: 1px solid var(--gray-medium);
+        border-radius: 4px;
+        overflow: hidden;
+    }
+    
+    .faq-question {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem;
+        background-color: var(--gray-light);
+        cursor: pointer;
+    }
+    
+    .faq-question h3 {
+        margin: 0;
+        font-size: 1.1rem;
+    }
+    
+    .faq-question i {
+        transition: transform var(--transition-speed);
+    }
+    
+    .faq-item.active .faq-question i {
+        transform: rotate(180deg);
+    }
+    
+    .faq-answer {
+        padding: 0;
+        max-height: 0;
+        overflow: hidden;
+        transition: all var(--transition-speed);
+        background-color: white;
+    }
+    
+    .faq-item.active .faq-answer {
+        padding: 1rem;
+        max-height: 200px;
+    }
+    
+    /* Social Media Section */
+    .social-connect {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.5rem;
+    }
+    
+    .social-platform {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 1.5rem;
+        background-color: var(--gray-light);
+        border-radius: 8px;
+        text-decoration: none;
+        color: var(--text-color);
+        transition: transform var(--transition-speed);
+    }
+    
+    .social-platform:hover {
+        transform: translateY(-5px);
+    }
+    
+    .social-platform i {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+    }
+    
+    .social-platform.instagram i {
+        color: #e4405f;
+    }
+    
+    .social-platform.youtube i {
+        color: #ff0000;
+    }
+    
+    .social-platform.twitter i {
+        color: #1da1f2;
+    }
+    
+    /* Map Section */
+    .map-section {
+        margin: 3rem 0;
+    }
+    
+    .map-section h2 {
+        text-align: center;
+        margin-bottom: 1.5rem;
+    }
+    
+    .google-map {
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    .message-button{
+        margin: 10px 50px;
+        background-color: #04AA6D; 
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        border-radius: 10px;
+    }
+    
+    /* Brand Banner */
+    .brand-banner {
+        background-color: var(--primary-color);
+        color: white;
+        text-align: center;
+        padding: 1rem;
+        margin: 2rem 0;
+    }
+    
+    /* Footer */
+    .footer-container {
+            background-color: var(--light-purple);
+            padding: 0 0 2rem 0;
+            margin-top: 4rem;
+            width: 100%;
+        }
+
+        .brand-banner {
+            background-color:#6E6B85;
+            color: var(--white);
+            text-align: center;
+            padding: 1rem 0;
+            margin-bottom: 3rem;
+            width: 100%;
+        }
+
+        .brand-banner h2 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .customer-count {
+            font-size: 1.8rem;
+            font-weight: 500;
+            color: var(--white);
+        }
+
+        .customer-count span {
+            font-weight: 700;
+        }
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            padding: 0 2rem;
+        }
+
+        .footer-column h3 {
+            color: var(--text-dark);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: 900;
+        }
+
+        .footer-column ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-column ul li a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .footer-column ul li a:hover {
+            color: var(--primary-purple);
+        }
+
+        .view-more {
+            color: var(--primary-purple) !important;
+            font-weight: 500;
+        }
+
+        .service-features {
+            margin-top: 2rem;
+        }
+
+        .feature {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .app-section {
+            text-align: center;
+            margin: 3rem 0;
+            padding: 0 2rem;
+        }
+
+        .app-section h3 {
+            color: var(--text-dark);
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .app-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .app-button img {
+            height: 40px;
+            border-radius: 8px;
+        }
+
+        .social-section {
+            text-align: center;
+            padding: 2rem 2rem 0;
+            border-top: 1px solid rgba(110, 107, 133, 0.1);
+            margin: 0 2rem;
+        }
+
+        .social-section p {
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            transition: transform 0.3s ease;
+            text-decoration: none;
+        }
+        
+
+        .social-icon:hover {
+            transform: translateY(-2px);
+        }
+
+        .social-icon.instagram { background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D); }
+        .social-icon.twitter { background-color: #1DA1F2; }
+        .social-icon.youtube{background-color: #FD1D1D;}
+
+        /* Footer Responsive Styles */
+        @media (max-width: 768px) {
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem 1rem;
+            }
+
+            .brand-banner h2 {
+                font-size: 1.2rem;
+            }
+
+            .customer-count {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .app-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .social-section {
+                margin: 0 1rem;
+            }
+        }
+    
+    /* Form Success/Error Messages */
+    .form-message {
+        padding: 1rem;
+        border-radius: 4px;
+        margin-bottom: 1rem;
+        display: none;
+    }
+    
+    .form-message.success {
+        background-color: var(--success-color);
+        color: white;
+        display: block;
+    }
+    
+    .form-message.error {
+        background-color: var(--error-color);
+        color: white;
+        display: block;
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .navbar {
+            flex-direction: column;
+            gap: 1rem;
+            padding: 1rem;
+        }
+    
+        .nav-links {
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+        }
+    
+        .contact-sections-grid {
+            grid-template-columns: 1fr;
+        }
+    
+        .social-connect {
+            grid-template-columns: 1fr;
+        }
+    
+        .footer-content {
+            grid-template-columns: 1fr;
+            text-align: center;
+        }
+    }
+    
+    /* Loading Animation */
+    .loading {
+        position: relative;
+    }
+    
+    .loading::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(255, 255, 255, 0.8);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.5rem;
+    }
+    
+    /* Animation Keyframes */
+    @keyframes slideIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    .message-form-section {
+    border-radius: 16px;
+    box-shadow: var(--shadow-md);
+    padding: 2rem;
+    transition: all 0.3s ease;
+}
+
+.message-form-section:hover {
+    box-shadow: var(--shadow-lg);
+}
+
+.message-form-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.message-form-header h2 {
+    color: var(--text-dark);
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.message-form-header p {
+    color: var(--text-light);
+    font-size: 1rem;
+}
+
+.contact-form {
+    display: grid;
+    gap: 1.5rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.form-group {
+    position: relative;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--text-dark);
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 2px solid var(--light-purple);
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background: var(--white);
+    color: var(--text-dark);
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-purple);
+    box-shadow: 0 0 0 3px var(--light-purple);
+}
+
+.form-group textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.form-group select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%236E6B85' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 1rem;
+}
+
+.submit-button {
+    background: var(--gradient-purple);
+    color: var(--white);
+    border: none;
+    border-radius: 8px;
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.submit-button:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.required-field::after {
+    content: "*";
+    color: var(--error-red);
+    margin-left: 4px;
+}
+
+@media (max-width: 640px) {
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .message-form-section {
+        padding: 1.5rem;
+    }
+}
+    .animate-in {
+        animation: slideIn 0.5s ease forwards;
+    }
+    </style>
+    <script>// script.js
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Form Handling
+            const contactForm = document.getElementById('contactForm');
+            const formGroups = document.querySelectorAll('.form-group');
+        
+            if (contactForm) {
+                contactForm.addEventListener('submit', handleFormSubmit);
+            }
+        
+            // FAQ Accordion
+            const faqItems = document.querySelectorAll('.faq-item');
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                question.addEventListener('click', () => toggleFAQ(item));
+            });
+        
+            // Form Validation and Submission
+            async function handleFormSubmit(e) {
+                e.preventDefault();
+                
+                if (!validateForm()) {
+                    showMessage('Please fill in all required fields correctly.', 'error');
+                    return;
+                }
+        
+                const formData = new FormData(contactForm);
+                const submitButton = contactForm.querySelector('button[type="submit"]');
+                
+                try {
+                    // Show loading state
+                    submitButton.disabled = true;
+                    submitButton.innerHTML = 'Sending...';
+                    contactForm.classList.add('loading');
+        
+                    // Simulate API call
+                    await simulateApiCall();
+        
+                    // Show success message
+                    showMessage('Thank you for your message. We\'ll get back to you soon!', 'success');
+                    contactForm.reset();
+                    
+                } catch (error) {
+                    showMessage('An error occurred. Please try again later.', 'error');
+                } finally {
+                    // Reset button state
+                    submitButton.disabled = false;
+                    submitButton.innerHTML = 'Send Message';
+                    contactForm.classList.remove('loading');
+                }
+            }
+        
+            // Form Validation
+            function validateForm() {
+                let isValid = true;
+                
+                // Remove existing error states
+                formGroups.forEach(group => {
+                    group.classList.remove('error');
+                });
+        
+                // Validate required fields
+                const requiredFields = contactForm.querySelectorAll('[required]');
+                requiredFields.forEach(field => {
+                    if (!field.value.trim()) {
+                        isValid = false;
+                        field.parentElement.classList.add('error');
+                    }
+                });
+        
+                // Validate email format
+                const emailField = contactForm.querySelector('#email');
+                if (emailField && emailField.value) {
+                    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    if (!emailPattern.test(emailField.value)) {
+                        isValid = false;
+                        emailField.parentElement.classList.add('error');
+                    }
+                }
+        
+                return isValid;
+            }
+        
+            // Show Message
+            function showMessage(message, type) {
+                // Remove existing messages
+                const existingMessages = document.querySelectorAll('.form-message');
+                existingMessages.forEach(msg => msg.remove());
+        
+                // Create new message
+                const messageElement = document.createElement('div');
+                messageElement.className = `form-message ${type}`;
+                messageElement.textContent = message;
+        
+                // Insert message before form
+                contactForm.insertBefore(messageElement, contactForm.firstChild);
+        
+                // Remove message after 5 seconds
+                setTimeout(() => {
+                    messageElement.remove();
+                }, 5000);
+            }
+        
+            // Toggle FAQ
+            function toggleFAQ(item) {
+                const isActive = item.classList.contains('active');
+                
+                // Close all FAQs
+                faqItems.forEach(faq => {
+                    faq.classList.remove('active');
+                });
+        
+                // Open clicked FAQ if it wasn't active
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            }
+        
+            // Simulate API Call
+            function simulateApiCall() {
+                return new Promise((resolve) => {
+                    setTimeout(resolve, 1500);
+                });
+            }
+        
+            // Scroll Animation
+            function handleScrollAnimation() {
+                const elements = document.querySelectorAll('.contact-section, .contact-card, .social-platform');
+                
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('animate-in');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, {
+                    threshold: 0.1
+                });
+        
+                elements.forEach(element => {
+                    observer.observe(element);
+                });
+            }
+        
+            // Initialize scroll animations
+            handleScrollAnimation();
+        
+            // Responsive Navigation
+            const menuToggle = document.createElement('button');
+            menuToggle.className = 'menu-toggle';
+            menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            
+            const navbar = document.querySelector('.navbar');
+            const navLinks = document.querySelector('.nav-links');
+        
+            if (window.innerWidth <= 768) {
+                navbar.insertBefore(menuToggle, navLinks);
+                navLinks.style.display = 'none';
+            }
+        
+            menuToggle.addEventListener('click', () => {
+                navLinks.style.display = navLinks.style.display === 'none' ? 'flex' : 'none';
+            });
+        
+            // Handle window resize
+            window.addEventListener('resize', () => {
+                if (window.innerWidth > 768) {
+                    navLinks.style.display = 'flex';
+                    if (menuToggle.parentNode) {
+                        menuToggle.parentNode.removeChild(menuToggle);
+                    }
+                } else {
+                    if (!document.querySelector('.menu-toggle')) {
+                        navbar.insertBefore(menuToggle, navLinks);
+                    }
+                }
+            });
+        });
+        </script>
+</head>
+<body>
+    <div>
+        <header>
+            <nav class="top-nav">
+                <div class="logo">
+                    <img src="assets/images/logo.png" alt="Store Logo" class="logo-img">
+                </div>
+    
+                <div class="nav-links">
+                    <a href="#" class="active">APPAREL</a>
+                    <a href="#">BEST SELLERS</a>
+                    <a href="#">NEW RELEASES</a>
+                    <a href="#">TRENDING</a>
+                    <a href="#">COLLECTIONS</a>
+                    <a href="#">PROMOS</a>
+                    <a href="#">MEMBERSHIP</a>
+                </div>
+    
+                <div class="nav-icons">
+                    <a href="#" class="search-icon"><i class="fas fa-search"></i></a>
+                    <a href="#" class="wishlist-icon"><i class="fas fa-heart"></i></a>
+                    <a href="#" class="cart-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">0</span>
+                    </a>
+                </div>
+            </nav>
+        </header>
+    
+        <main class="contact-page-container" role="main">
+            <!-- Hero Section -->
+            <section class="contact-hero">
+                <h1>Get in Touch</h1>
+                <p>We're here to help! Choose the best way to reach us below.</p>
+            </section>
+    
+            <!-- Contact Sections Grid -->
+            <div class="contact-sections-grid">
+                <!-- Quick Connect Section -->
+                <section class="contact-section">
+                    <h2>Quick Connect</h2>
+                    <div class="contact-cards-container">
+                        <div class="contact-card">
+                            <h3>Customer Support</h3>
+                            <p>Phone: +91 1800-123-4567</p>
+                            <p>Hours: 10 AM - 7 PM (Mon-Sat)</p>
+                            <p>Email: support@yourbrand.com</p>
+                        </div>
+    
+                        <div class="contact-card">
+                            <h3>Corporate Office</h3>
+                            <p>42, Innovation Hub,</p>
+                            <p>Cyber City, Gurugram,</p>
+                            <p>Haryana - 122002</p>
+                        </div>
+    
+                        <div class="contact-card">
+                            <h3>Store Related</h3>
+                            <p>Email: stores@yourbrand.com</p>
+                            <p>Partnership: collaborate@yourbrand.com</p>
+                        </div>
+                    </div>
+                </section>
+    
+                <section class="contact-section message-form-section">
+                    <div class="message-form-header">
+                        <h2>Send Us a Message</h2>
+                        <p>We'd love to hear from you! Please fill out the form below.</p>
+                    </div>
+                    
+                    <form class="contact-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="required-field">First Name</label>
+                                <input type="text" placeholder="John" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="required-field">Last Name</label>
+                                <input type="text" placeholder="Doe" required>
+                            </div>
+                        </div>
+                        
+    
+                        <div class="form-group">
+                            <label class="required-field">Email Address</label>
+                            <input type="email" placeholder="john.doe@example.com" required>
+                        </div>
+                        
+                        
+                        <div class="form-group">
+                            <label>Phone Number</label>
+                            <input type="text" placeholder="+91 98765 43210">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="required-field">Subject</label>
+                            <select required>
+                                <option value="" disabled selected>Please select a subject</option>
+                                <option value="order_status">Order Status</option>
+                                <option value="returns">Returns & Refunds</option>
+                                <option value="product">Product Information</option>
+                                <option value="payment">Payment Issues</option>
+                                <option value="feedback">Feedback</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="required-field">Message</label>
+                            <textarea placeholder="Please describe your query in detail..." required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="submit-button">
+                            Send Message
+                        </button>
+                    </form>
+                </section>
+    
+                <!-- FAQs Section -->
+                <section class="contact-section">
+                    <h2>FAQs</h2>
+                    <div class="faq-container" >
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <h3>How can I track my order?</h3>
+                            </div>
+                            <div class="faq-answer">
+                                <p>You can track your order by clicking on 'Track Order' in the footer or visiting your account dashboard.</p>
+                            </div>
+                        </div>
+    
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <h3>What is your return policy?</h3>
+                            </div>
+                            <div class="faq-answer">
+                                <p>We offer a hassle-free 30-day return policy for all unused products in original condition with tags attached.</p>
+                            </div>
+                        </div>
+    
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <h3>How long does shipping take?</h3>
+                            </div>
+                            <div class="faq-answer">
+                                <p>Standard delivery takes 4-5 business days. Express delivery (available in select cities) takes 1-2 business days.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+    
+            <!-- Map Section -->
+            <section class="map-section" >
+                <h2>Visit Our Store</h2>
+                <div class="google-map">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d23.1543!2d72.6657!3d23.1543!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xADDRESS_ID!2sPandit%20Deendayal%20Energy%20University%2C%20Gandhinagar%2C%20Gujarat!5e0!3m2!1sen!2sin!4vUNIQUE_ID                " 
+                        width="1200px" 
+                        height="400px" 
+                        frameborder="0" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        aria-hidden="false" 
+                        tabindex="0">
+                    </iframe>
+                </div>
+            </section>
+        </main>
+    
+        <footer class="footer-container">
+            <div class="brand-banner">
+                <h2>HOMEGROWN INDIAN BRAND</h2>
+            </div>
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>NEED HELP</h3>
+                    <ul>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Track Order</a></li>
+                        <li><a href="#">Returns & Refunds</a></li>
+                        <li><a href="#">FAQs</a></li>
+                        <li><a href="#">My Account</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>COMPANY</h3>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Gift Vouchers</a></li>
+                        <li><a href="#">Community Initiatives</a></li>
+                        <li><a href="#">Souled Army</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>MORE INFO</h3>
+                    <ul>
+                        <li><a href="#">Terms & Conditions</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Delivery Info</a></li>
+                        <li><a href="#">Payment Options</a></li>
+                    </ul>
+                </div>
+                <div class="social-section">
+                    <p>Follow Us:</p>
+                    <div class="social-icons">
+                       
+                        <a href="https://www.instagram.com/arcfusionindia/" class="social-icon instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        
+                        <a href="#" class="social-icon twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://www.youtube.com/@ArcFusionIndia2024" class="social-icon youtube">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    
+        
+    </div>
+</body>
+</html>
+
