@@ -36,71 +36,7 @@ img {
 
 
 /* Header Styles */
-header {
-    background-color: var(--white);
-    box-shadow: var(--shadow-md);
-}
 
-.top-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 2rem;
-    max-width: 1400px;
-    margin: 0 auto;
-    background: var(--white);
-}
-
-.logo img {
-    height: 40px;
-}
-
-.nav-links {
-    display: flex;
-    gap: 2rem;
-}
-
-.nav-links a {
-    position: relative;
-    overflow: hidden;
-}
-.nav-links a::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    width: 0;
-    height: 2px;
-    background: var(--primary-purple);
-    transition: var(--transition-smooth);
-    transform: translateX(-50%);
-}
-
-.nav-links a:hover::after {
-    width: 100%;
-}
-
-.nav-links a.active,
-.nav-links a:hover {
-    color: var(--primary-purple);
-    background-color: var(--light-purple);
-}
-
-.nav-icons {
-    display: flex;
-    gap: 1.5rem;
-}
-
-.nav-icons a {
-    color: var(--text-light);
-    font-size: 1.2rem;
-    transition: color 0.3s ease;
-    position: relative;
-}
-
-.nav-icons a:hover {
-    color: var(--primary-purple);
-}
 
 /* Slider Section */
 .slider-section {
