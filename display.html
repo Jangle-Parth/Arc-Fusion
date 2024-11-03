@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Urban Street Tee - ArcFusion</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-purple: #7B6CF6;
+            --light-purple: #F3F1FF;
+            --dark-purple: #4A3F9F;
+            --accent-purple: #9D8DF7;
+            --text-dark: #2D2A45;
+            --text-light: #6E6B85;
+            --white: #FFFFFF;
+            --success-green: #4CAF50;
+            --warning-orange: #FF9800;
+            --error-red: #F44336;
+            --gradient-purple: linear-gradient(135deg, #7B6CF6 0%, #9D8DF7 100%);
+            --shadow-sm: 0 2px 4px rgba(123, 108, 246, 0.1);
+            --shadow-md: 0 4px 6px rgba(123, 108, 246, 0.15);
+            --shadow-lg: 0 8px 16px rgba(123, 108, 246, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--white);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* Header Styles - Same as previous */
+        header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+        }
+
+        .top-nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 48px;
+            transition: transform 0.3s ease;
+        }
+
+        .logo img:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 600;
+            font-size: 0.95rem;
+            padding: 0.5rem 1rem;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: var(--gradient-purple);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 80%;
+        }
+
+        .nav-links a.active {
+            background: var(--gradient-purple);
+            color: var(--white);
+        }
+
+        .nav-icons {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-icons a {
+            color: var(--text-dark);
+            font-size: 1.4rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-icons a:hover {
+            color: var(--primary-purple);
+            transform: scale(1.1);
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: var(--primary-purple);
+            color: var(--white);
+            font-size: 0.7rem;
+            padding: 0.2rem 0.5rem;
+            border-radius: 10px;
+            font-weight: 600;
+        }
+
+
+        /* Color selection */
+        .color-selector {
+            margin-bottom: 2rem;
+        }
+
+        .color-title {
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .color-options {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .color-option {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .color-option:hover {
+            transform: scale(1.1);
+        }
+
+        .color-option.selected::after {
+            content: '';
+            position: absolute;
+            top: -4px;
+            left: -4px;
+            right: -4px;
+            bottom: -4px;
+            border: 2px solid var(--primary-purple);
+            border-radius: 50%;
+        }
+
+
+
+        /* Main Product Section */
+        .product-container {
+            max-width: 1400px;
+            margin: 100px auto 0;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: 60% 40%;
+            gap: 2rem;
+        }
+
+        /* Product Gallery */
+        .product-gallery {
+            position: sticky;
+            top: 100px;
+            height: fit-content;
+        }
+
+        .main-image {
+            width: 100%;
+            height: 600px;
+            border-radius: 20px;
+            overflow: hidden;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .main-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .main-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .thumbnail-container {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .thumbnail {
+            width: 80px;
+            height: 80px;
+            border-radius: 12px;
+            overflow: hidden;
+            cursor: pointer;
+            opacity: 0.6;
+            transition: all 0.3s ease;
+        }
+
+        .thumbnail.active {
+            opacity: 1;
+            border: 2px solid var(--primary-purple);
+        }
+
+        .thumbnail:hover {
+            opacity: 1;
+        }
+
+        .thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Product Info */
+        .product-info {
+            padding: 2rem;
+        }
+
+        .product-category {
+            color: var(--primary-purple);
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .product-rating {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .stars {
+            color: #FFD700;
+        }
+
+        .review-count {
+            color: var(--text-light);
+            text-decoration: none;
+        }
+
+        .product-price {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .original-price {
+            text-decoration: line-through;
+            color: var(--text-light);
+            font-size: 1.5rem;
+        }
+
+        .discount {
+            background: var(--success-green);
+            color: var(--white);
+            padding: 0.3rem 0.8rem;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .size-selector {
+            margin-bottom: 2rem;
+        }
+
+        .size-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .size-guide {
+            color: var(--primary-purple);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .size-options {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .size-option {
+            width: 50px;
+            height: 50px;
+            border: 2px solid var(--text-light);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .size-option:hover {
+            border-color: var(--primary-purple);
+            color: var(--primary-purple);
+        }
+
+        .size-option.selected {
+            background: var(--primary-purple);
+            color: var(--white);
+            border-color: var(--primary-purple);
+        }
+
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .quantity-btn {
+            width: 40px;
+            height: 40px;
+            border: none;
+            background: var(--light-purple);
+            border-radius: 8px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .quantity-btn:hover {
+            background: var(--primary-purple);
+            color: var(--white);
+        }
+
+        .quantity-input {
+            width: 60px;
+            height: 40px;
+            text-align: center;
+            border: 2px solid var(--light-purple);
+            border-radius: 8px;
+            font-weight: 600;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .add-to-cart, .buy-now {
+            flex: 1;
+            padding: 1rem;
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .add-to-cart {
+            background: var(--light-purple);
+            color: var(--primary-purple);
+        }
+
+        .buy-now {
+            background: var(--gradient-purple);
+            color: var(--white);
+        }
+
+        .add-to-cart:hover, .buy-now:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .wishlist-btn {
+            width: 50px;
+            height: 50px;
+            border: 2px solid var(--light-purple);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+            color: var(--text-light);
+        }
+
+        .wishlist-btn:hover {
+            border-color: var(--error-red);
+            color: var(--error-red);
+        }
+
+        .product-details {
+            margin-top: 3rem;
+        }
+
+        .details-tabs {
+            display: flex;
+            gap: 2rem;
+            border-bottom: 2px solid var(--light-purple);
+            margin-bottom: 2rem;
+        }
+
+        .tab {
+            padding: 1rem 0;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--text-light);
+            position: relative;
+        }
+
+        .tab.active {
+            color: var(--primary-purple);
+        }
+
+        .tab.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--primary-purple);
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .feature-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .feature-icon {
+            width: 30px;
+            height: 30px;
+            background: var(--light-purple);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-purple);
+        }
+
+        /* Delivery Info */
+        .delivery-info {
+            background: var(--light-purple);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .pincode-checker {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .pincode-input {
+            flex: 1;
+            padding: 0.8rem 1rem;
+            border: 2px solid transparent;
+            border-radius: 8px;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .pincode-input:focus {
+            border-color: var(--primary-purple);
+        }
+
+        .check-btn {
+            padding: 0.8rem 1.5rem;
+            background: var(--primary-purple);
+            color: var(--white);
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .check-btn:hover {
+            background: var(--dark-purple);
+        }
+
+        /* Similar Products */
+        .similar-products {
+            margin-top: 4rem;
+            padding: 2rem;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .products-slider {
+            display: flex;
+            gap: 2rem;
+            overflow-x: auto;
+            padding: 1rem;
+            scrollbar-width: none;
+        }
+
+        .products-slider::-webkit-scrollbar {
+            display: none;
+        }
+
+        .product-card {
+            min-width: 250px;
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 1rem;
+        }
+
+        @media (max-width: 1024px) {
+            .product-container {
+                grid-template-columns: 1fr;
+            }
+
+            .product-gallery {
+                position: relative;
+                top: 0;
+            }
+
+            .main-image {
+                height: 400px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .feature-list {
+                grid-template-columns: 1fr;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+            }
+
+            .size-options {
+                flex-wrap: wrap;
+            }
+        }
+
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--success-green);
+            color: var(--white);
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            box-shadow: var(--shadow-lg);
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header (Same as previous) -->
+    <header>
+        <nav class="top-nav">
+            <div class="logo">
+                <img src="/api/placeholder/150/48" alt="ArcFusion Logo">
+            </div>
+            <div class="nav-links">
+                <a href="#" class="active">APPAREL</a>
+                <a href="#">BEST SELLERS</a>
+                <a href="#">NEW RELEASES</a>
+                <a href="#">TRENDING</a>
+                <a href="#">COLLECTIONS</a>
+                <a href="#">PROMOS</a>
+                <a href="#">MEMBERSHIP</a>
+            </div>
+            <div class="nav-icons">
+                <i class="fas fa-search"></i>
+                <i class="fas fa-shopping-cart"></i>
+                <i class="fas fa-user"></i>
+            </div>
+        </nav>
+    </header>
+
+    <main class="product-container">
+        <div class="product-gallery">
+            <div class="main-image">
+                <img src="assets\images\categories\image_3.jpg" alt="Urban Street Tee - Main">
+            </div>
+            <div class="thumbnail-container">
+                <div class="thumbnail active">
+                    <img src="/api/placeholder/80/80" alt="Thumbnail 1">
+                </div>
+                <div class="thumbnail">
+                    <img src="/api/placeholder/80/80" alt="Thumbnail 2">
+                </div>
+                <div class="thumbnail">
+                    <img src="/api/placeholder/80/80" alt="Thumbnail 3">
+                </div>
+                <div class="thumbnail">
+                    <img src="/api/placeholder/80/80" alt="Thumbnail 4">
+                </div>
+            </div>
+        </div>
+
+        <div class="product-info">
+            <div class="product-category">Premium Collection</div>
+            <h1 class="product-title">Urban Street Tee</h1>
+            <div class="product-rating">
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <a href="#" class="review-count">4.5 (128 reviews)</a>
+            </div>
+
+            <div class="product-price">
+                <span>$49.99</span>
+                <span class="original-price">$69.99</span>
+                <span class="discount">-28%</span>
+            </div>
+
+             <div class="color-selector">
+                <div class="color-title">Select Color</div>
+                <div class="color-options">
+                    <div class="color-option selected" style="background-color: #000000" title="Black"></div>
+                    <div class="color-option" style="background-color: #FFFFFF; border: 1px solid #E5E7EB" title="White"></div>
+                    <div class="color-option" style="background-color: #7B6CF6" title="Purple"></div>
+                    <div class="color-option" style="background-color: #EF4444" title="Red"></div>
+                    <div class="color-option" style="background-color: #10B981" title="Green"></div>
+                </div>
+            </div>
+
+            <div class="quantity-selector">
+                <button class="quantity-btn">-</button>
+                <input type="number" class="quantity-input" value="1" min="1" max="10">
+                <button class="quantity-btn">+</button>
+            </div>
+
+            <div class="action-buttons">
+                <button class="add-to-cart">
+                    <i class="fas fa-shopping-cart"></i>
+                    Add to Cart
+                </button>
+                <button class="buy-now">
+                    <i class="fas fa-bolt"></i>
+                    Buy Now
+                </button>
+                <button class="wishlist-btn">
+                    <i class="far fa-heart"></i>
+                </button>
+            </div>
+
+            <div class="product-details">
+                <div class="details-tabs">
+                    <div class="tab active">Description</div>
+                    <div class="tab">Features</div>
+                    <div class="tab">Reviews</div>
+                </div>
+
+                <div class="tab-content active">
+                    <p>Experience ultimate comfort with our Urban Street Tee. Crafted from premium cotton blend fabric, this versatile piece combines style with functionality. Perfect for everyday wear or casual outings.</p>
+                    
+                    <div class="feature-list">
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-tshirt"></i>
+                            </div>
+                            <span>Premium Cotton Blend</span>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-wind"></i>
+                            </div>
+                            <span>Breathable Fabric</span>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <span>Anti-Wrinkle</span>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <span>UV Protection</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="delivery-info">
+                <h3>Check Delivery</h3>
+                <div class="pincode-checker">
+                    <input type="text" class="pincode-input" placeholder="Enter Pincode">
+                    <button class="check-btn">Check</button>
+                </div>
+                <p>Free delivery on orders above $99</p>
+            </div>
+        </div>
+    </main>
+
+    <section class="similar-products">
+        <h2 class="section-title">You May Also Like</h2>
+        <div class="products-slider">
+            <div class="product-card">
+                <img src="assets\images\categories\image_3.jpg" alt="Similar Product 1">
+                <div class="card-content">
+                    <h3>Street Style Hoodie</h3>
+                    <p>$59.99</p>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="assets\images\categories\image_2.jpg" alt="Similar Product 2">
+                <div class="card-content">
+                    <h3>Urban Cargo Pants</h3>
+                    <p>$79.99</p>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="assets\images\categories\image_1.jpg" alt="Similar Product 3">
+                <div class="card-content">
+                    <h3>City Bomber Jacket</h3>
+                    <p>$129.99</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="toast">
+        <i class="fas fa-check-circle"></i>
+        <span>Added to cart successfully!</span>
+    </div>
+
+    <script>
+        // Basic functionality for the product page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Size selector
+            const sizeOptions = document.querySelectorAll('.size-option');
+            sizeOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    sizeOptions.forEach(opt => opt.classList.remove('selected'));
+                    this.classList.add('selected');
+                });
+            });
+
+            // Quantity selector
+            const quantityInput = document.querySelector('.quantity-input');
+            const quantityBtns = document.querySelectorAll('.quantity-btn');
+            
+            quantityBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const currentValue = parseInt(quantityInput.value);
+                    if (this.textContent === '+' && currentValue < 10) {
+                        quantityInput.value = currentValue + 1;
+                    } else if (this.textContent === '-' && currentValue > 1) {
+                        quantityInput.value = currentValue - 1;
+                    }
+                });
+            });
+
+            // Thumbnail switcher
+            const thumbnails = document.querySelectorAll('.thumbnail');
+            const mainImage = document.querySelector('.main-image img');
+            
+            thumbnails.forEach(thumb => {
+                thumb.addEventListener('click', function() {
+                    thumbnails.forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+                    mainImage.src = this.querySelector('img').src;
+                });
+            });
+
+            // Add to cart toast
+            const addToCartBtn = document.querySelector('.add-to-cart');
+            const toast = document.querySelector('.toast');
+            
+            addToCartBtn.addEventListener('click', function() {
+                toast.classList.add('show');
+                setTimeout(() => {
+                    toast.classList.remove('show');
+                }, 3000);
+            });
+
+            // Tab switching
+            const tabs = document.querySelectorAll('.tab');
+            const tabContents = document.querySelectorAll('.tab-content');
+            
+            tabs.forEach((tab, index) => {
+                tab.addEventListener('click', function() {
+                    tabs.forEach(t => t.classList.remove('active'));
+                    tabContents.forEach(c => c.classList.remove('active'));
+                    this.classList.add('active');
+                    tabContents[index].classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

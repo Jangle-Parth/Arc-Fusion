@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ArcFusion</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-purple: #7B6CF6;
+            --light-purple: #F3F1FF;
+            --dark-purple: #4A3F9F;
+            --accent-purple: #9D8DF7;
+            --text-dark: #2D2A45;
+            --text-light: #6E6B85;
+            --white: #FFFFFF;
+            --success-green: #4CAF50;
+            --warning-orange: #FF9800;
+            --error-red: #F44336;
+            --gradient-purple: linear-gradient(135deg, #7B6CF6 0%, #9D8DF7 100%);
+            --shadow-sm: 0 2px 4px rgba(123, 108, 246, 0.1);
+            --shadow-md: 0 4px 6px rgba(123, 108, 246, 0.15);
+            --shadow-lg: 0 8px 16px rgba(123, 108, 246, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--white);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* Header Styles */
+        header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+        }
+
+        .top-nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 48px;
+            transition: transform 0.3s ease;
+        }
+
+        .logo img:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 600;
+            font-size: 0.95rem;
+            padding: 0.5rem 1rem;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: var(--gradient-purple);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 80%;
+        }
+
+        .nav-links a.active {
+            background: var(--gradient-purple);
+            color: var(--white);
+        }
+
+        .nav-icons {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-icons a {
+            color: var(--text-dark);
+            font-size: 1.4rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-icons a:hover {
+            color: var(--primary-purple);
+            transform: scale(1.1);
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: var(--primary-purple);
+            color: var(--white);
+            font-size: 0.7rem;
+            padding: 0.2rem 0.5rem;
+            border-radius: 10px;
+            font-weight: 600;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            padding: 4rem 2rem;
+            background: var(--light-purple);
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            background: var(--gradient-purple);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 800;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        /* Products Grid */
+        .products-section {
+            padding: 4rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            position: relative;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .card:hover img {
+            transform: scale(1.05);
+        }
+
+        .card-content {
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+
+        .price {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary-purple);
+            margin-bottom: 1rem;
+        }
+
+        .buy-button {
+            background: var(--gradient-purple);
+            color: var(--white);
+            padding: 0.8rem 2rem;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .buy-button:hover {
+            transform: scale(1.05);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Footer */
+        .footer-container {
+            background: var(--text-dark);
+            color: var(--white);
+            padding: 4rem 2rem 2rem;
+            margin-top: 4rem;
+        }
+
+        .brand-banner {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .brand-banner h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            background: var(--gradient-purple);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            color: var(--white);
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--primary-purple);
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 1rem;
+        }
+
+        .footer-column ul li a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-column ul li a:hover {
+            color: var(--primary-purple);
+        }
+
+        .social-section {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .social-icon {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-icon:hover {
+            transform: translateY(-5px) rotate(360deg);
+        }
+
+        .instagram { background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D); }
+        .twitter { background: #1DA1F2; }
+        .youtube { background: #FF0000; }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+
+            .grid {
+                grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="top-nav">
+            <div class="logo">
+                <img src="logo.png" alt="ArcFusion Logo">
+            </div>
+            <div class="nav-links">
+                <a href="#" class="active">APPAREL</a>
+                <a href="#">BEST SELLERS</a>
+                <a href="#">NEW RELEASES</a>
+                <a href="#">TRENDING</a>
+                <a href="#">COLLECTIONS</a>
+                <a href="#">PROMOS</a>
+                <a href="#">MEMBERSHIP</a>
+            </div>
+            <div class="nav-icons">
+                <a href="#" class="search-icon"><i class="fas fa-search"></i></a>
+                <a href="#" class="wishlist-icon"><i class="far fa-heart"></i></a>
+                <a href="#" class="cart-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">0</span>
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Elevate Your Style Game</h1>
+        <p>Discover the perfect blend of comfort and contemporary fashion with our latest collection.</p>
+    </section>
+
+    <main>
+        <section class="products-section">
+            <div class="section-header">
+                <h2>Featured Collection</h2>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <img src="assets\images\categories\image_1.jpg" alt="Urban Streetwear">
+                    <div class="card-content">
+                        <h3>Urban Street Tee</h3>
+                        <p class="price">₹999</p>
+                        <a href="#" class="buy-button">Add to Cart</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="assets\images\categories\image_2.jpg" alt="Designer Collection">
+                    <div class="card-content">
+                        <h3>Designer Edition</h3>
+                        <p class="price">₹1,199</p>
+                        <a href="#" class="buy-button">Add to Cart</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="assets\images\categories\image_3.jpg" alt="Premium Collection">
+                    <div class="card-content">
+                        <h3>Premium Blend</h3>
+                        <p class="price">₹1,299</p>
+                        <a href="#" class="buy-button">Add to Cart</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="assets\images\categories\image_4.jpg" alt="Signature Series">
+                    <div class="card-content">
+                        <h3>Signature Series</h3>
+                        <p class="price">₹1,499</p>
+                        <a href="#" class="buy-button">Add to Cart</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer-container">
+        <div class="brand-banner">
+            <h2>HOMEGROWN INDIAN BRAND</h2>
+        </div>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>NEED HELP</h3>
+                <ul>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Track Order</a></li>
+                    <li><a href="#">Returns & Refunds</a></li>
+                    <li><a href="#">FAQs</a></li>
+                    <li><a href="#">My Account</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>COMPANY</h3>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Gift Vouchers</a></li>
+                    <li><a href="#">Community Initiatives</a></li>
+                    <li><a href="#">Souled Army</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>MORE INFO</h3>
+                <ul>
+                    <li><a href="#">T&C</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Sitemap</a></li>
+                    <li><a href="#">Blogs</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>EXPERIENCE ARCFUSION APP</h3>
+                <p style="color: var(--text-light); margin-bottom: 1rem;">Shop seamlessly and enjoy exclusive app-only benefits</p>
+                <div style="display: flex; gap: 1rem; margin-bottom: 1.5rem;">
+                    <img src="/api/placeholder/135/40" alt="App Store" style="border-radius: 8px; cursor: pointer; transition: transform 0.3s ease;">
+                    <img src="/api/placeholder/135/40" alt="Play Store" style="border-radius: 8px; cursor: pointer; transition: transform 0.3s ease;">
+                </div>
+                <div class="service-features">
+                    <div class="feature">
+                        <i class="fas fa-truck" style="color: var(--primary-purple)"></i>
+                        <span>Fast Delivery</span>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-undo" style="color: var(--primary-purple)"></i>
+                        <span>Easy Returns</span>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-shield-alt" style="color: var(--primary-purple)"></i>
+                        <span>Secure Shopping</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="social-section">
+            <p style="color: var(--text-light); font-size: 1.1rem; margin-bottom: 1.5rem;">Connect with us on social media</p>
+            <div class="social-icons">
+                <a href="https://www.instagram.com/arcfusionindia/" class="social-icon instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="#" class="social-icon twitter">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="https://www.youtube.com/@ArcFusionIndia2024" class="social-icon youtube">
+                    <i class="fab fa-youtube"></i>
+                </a>
+            </div>
+            <p style="color: var(--text-light); font-size: 0.9rem; margin-top: 2rem; text-align: center;">
+                © 2024 ArcFusion. All rights reserved. Designed with <i class="fas fa-heart" style="color: var(--primary-purple)"></i> in India
+            </p>
+        </div>
+
+        <!-- Newsletter Subscription -->
+        <div style="max-width: 500px; margin: 3rem auto 0; text-align: center; padding: 0 1rem;">
+            <h3 style="color: var(--white); margin-bottom: 1rem; font-size: 1.2rem;">Subscribe to our Newsletter</h3>
+            <p style="color: var(--text-light); margin-bottom: 1.5rem;">Stay updated with the latest trends and exclusive offers</p>
+            <div style="display: flex; gap: 1rem;">
+                <input type="email" placeholder="Enter your email" 
+                    style="flex: 1; padding: 0.8rem 1rem; border-radius: 12px; border: 1px solid var(--text-light); 
+                    background: transparent; color: var(--white); outline: none; transition: all 0.3s ease;">
+                <button style="background: var(--gradient-purple); color: var(--white); padding: 0.8rem 2rem; 
+                    border-radius: 12px; border: none; cursor: pointer; font-weight: 600; transition: all 0.3s ease;"
+                    onmouseover="this.style.transform='scale(1.05)'" 
+                    onmouseout="this.style.transform='scale(1)'">
+                    Subscribe
+                </button>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Add to Cart Animation Container -->
+    <div id="cart-animation" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+        pointer-events: none; z-index: 9999;"></div>
+
+    <script>
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Header scroll effect
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            const currentScroll = window.pageYOffset;
+
+            if (currentScroll <= 0) {
+                header.style.boxShadow = 'none';
+            } else {
+                header.style.boxShadow = 'var(--shadow-md)';
+            }
+
+            lastScroll = currentScroll;
+        });
+
+        // Add to Cart Animation
+        const buttons = document.querySelectorAll('.buy-button');
+        const cartIcon = document.querySelector('.cart-icon');
+        const cartCount = document.querySelector('.cart-count');
+        let count = 0;
+
+        buttons.forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Create flying element
+                const flyingElement = document.createElement('div');
+                const rect = this.getBoundingClientRect();
+                const cartRect = cartIcon.getBoundingClientRect();
+                
+                flyingElement.style.cssText = `
+                    position: fixed;
+                    width: 20px;
+                    height: 20px;
+                    background: var(--primary-purple);
+                    border-radius: 50%;
+                    top: ${rect.top + rect.height/2}px;
+                    left: ${rect.left + rect.width/2}px;
+                    pointer-events: none;
+                    transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+                    z-index: 9999;
+                `;
+                
+                document.getElementById('cart-animation').appendChild(flyingElement);
+                
+                // Trigger animation
+                setTimeout(() => {
+                    flyingElement.style.transform = `translate(${cartRect.left - rect.left}px, ${cartRect.top - rect.top}px) scale(0)`;
+                    flyingElement.style.opacity = '0';
+                }, 10);
+                
+                // Update cart count
+                setTimeout(() => {
+                    count++;
+                    cartCount.textContent = count;
+                    flyingElement.remove();
+                }, 800);
+            });
+        });
+
+        // Product Card Hover Effect
+        document.querySelectorAll('.card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                card.style.setProperty('--x', `${x}px`);
+                card.style.setProperty('--y', `${y}px`);
+            });
+        });
+    </script>
+</body>
+</html>
