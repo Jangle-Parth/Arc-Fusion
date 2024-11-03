@@ -1,3 +1,11 @@
+<!-- day to day home
+industrial
+decoration
+gifts
+asscesoories
+custom designs -->
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,6 +20,74 @@
 
 <body>
     <header>
+        <style>
+        .card-container, .categories-grid-top, .categories-grid-bottom {
+            display: grid;
+            gap: 2rem;
+            justify-content: center;
+            padding-bottom: 10px;
+        }
+
+        .card-container {
+            grid-template-columns: repeat(3, 1fr); /* 3 columns layout */
+        }
+    
+            .product-frame {
+                width: 300px;
+                position: relative;
+                padding: 12px;
+                background: white;
+                border: 3px solid black;
+                border-radius: 24px;
+                cursor: pointer;
+                transition: transform 0.3s ease;
+                text-align: center  ;
+            }
+    
+            .product-frame:hover {
+                transform: translateY(-10px);
+            }
+    
+            .product-frame img {
+                width: 100%;
+                height: 300px;
+                object-fit: cover;
+                border-radius: 12px;
+            }
+    
+            .label-container {
+                position: absolute;
+                bottom: -25px;
+                left: 50%;
+                transform: translateX(-50%);
+                background: white;
+                padding: 8px 40px;
+                border: 4px solid black;
+                border-radius: 30px;
+                white-space: nowrap;
+            }
+    
+            .product-name {
+                margin: 0;
+                font-size: 24px;
+                font-weight: bold;
+                text-transform: uppercase;
+                font-family: Arial, sans-serif;
+            }
+    
+            .price {
+                position: absolute;
+                top: 20px;
+                right: 20px;
+                background: black;
+                color: white;
+                padding: 8px 16px;
+                border-radius: 20px;
+                font-weight: bold;
+                font-size: 18px;
+            }
+            </style>
+
         <nav class="top-nav">
             <div class="logo">
                 <img src="assets/images/logo.png" alt="Store Logo" class="logo-img">
@@ -50,74 +126,126 @@
 
         <!-- Drop of the Day Section -->
         <section class="drops-section">
-            <h2 class="section-title">DROP OF THE DAY</h2>
-            <div class="drops-container">
-                <div class="drops-grid">
-                    <div class="drop-card">
-                        <div class="product-label">Antariksh Oversized T-Shirt</div>
-                        <img src="assets/images/drop-of-the-day/image_1.webp" alt="Antariksh T-Shirt">
-                    </div>
-                    <div class="drop-card">
-                        <div class="product-label">TSS Originals Casual Shirt</div>
-                        <img src="assets/images/drop-of-the-day/image_2.webp" alt="TSS Casual Shirt">
-                    </div>
-                    <div class="drop-card">
-                        <div class="product-label">FC Barcelona Hoodie</div>
-                        <img src="assets/images/drop-of-the-day/image_3.webp" alt="Barcelona Hoodie">
+            <h2 class="section-title">DROP OF THE DAY</h2>    
+            <div class="card-container">
+                <div class="product-frame">
+                    <img src="assets\images\categories\image_1.jpg" alt="Device Stand">
+                    <div class="price">$29.99</div>
+                    <div class="label-container">
+                        <h3 class="product-name">Device Stand</h3>
                     </div>
                 </div>
-            </div>
+        
+                <div class="product-frame">
+                    <img src="assets\images\categories\image_2.jpg" alt="AirPods Case">
+                    <div class="price">$19.99</div>
+                    <div class="label-container">
+                        <h3 class="product-name">AirPods Case</h3>
+                    </div>
+                </div>
+        
+                <div class="product-frame">
+                    <img src="assets\images\categories\image_3.jpg" alt="Mushroom Lamp">
+                    <div class="price">$39.99</div>
+                    <div class="label-container">
+                        <h3 class="product-name">Mushroom Lamp</h3>
+                    </div>
+                </div>    
+            </div>  
         </section>
 
         <!-- Best Sellers Section -->
         <section class="best-sellers">
             <h2 class="best-sellers-title">BEST SELLERS</h2>
-            <div class="best-sellers-grid">
-                <div class="product-card">
-                    <div class="stamp-frame">
-                        <img src="assets/images/best-seller/image_1.webp" alt="Best of T-Shirts" class="product-image">
+   
+                <div class="card-container">
+                    <div class="product-frame">
+                        <img src="assets\images\categories\image_1.jpg" alt="Device Stand">
+                        <div class="price">$29.99</div>
+                        <div class="label-container">
+                            <h3 class="product-name">Device Stand</h3>
+                        </div>
                     </div>
-                </div>
-                <div class="product-card">
-                    <div class="stamp-frame">
-                        <img src="assets/images/best-seller/image_2.webp" alt="Best of Shirts" class="product-image">
+            
+                    <div class="product-frame">
+                        <img src="assets\images\categories\image_2.jpg" alt="AirPods Case">
+                        <div class="price">$19.99</div>
+                        <div class="label-container">
+                            <h3 class="product-name">AirPods Case</h3>
+                        </div>
                     </div>
-                </div>
-                <div class="product-card">
-                    <div class="stamp-frame">
-                        <img src="assets/images/best-seller/image_3.webp" alt="Best of Polos" class="product-image">
+            
+                    <div class="product-frame">
+                        <img src="assets\images\categories\image_3.jpg" alt="Mushroom Lamp">
+                        <div class="price">$39.99</div>
+                        <div class="label-container">
+                            <h3 class="product-name">Mushroom Lamp</h3>
+                        </div>
                     </div>
+                    
                 </div>
-            </div>
+ 
         </section>
-
+        
         <!-- Categories Section -->
         <section class="categories-section">
             <h2 class="categories-title">CATEGORIES</h2>
             <div class="categories-grid-top">
-                <div class="category-card">
-                    <a href="categories.html"><img src="assets/images/categories/image_1.png" alt="Oversized T-shirt" class="category-image"></a>
+                    <div class="product-frame">
+                        <img src="assets\images\categories\image_1.jpg" alt="Device Stand">
+                        <div class="price">$29.99</div>
+                        <div class="label-container">
+                            <h3 class="product-name">Device Stand</h3>
+                        </div>
+                    </div>
+            
+                    <div class="product-frame">
+                        <img src="assets\images\categories\image_2.jpg" alt="AirPods Case">
+                        <div class="price">$19.99</div>
+                        <div class="label-container">
+                            <h3 class="product-name">AirPods Case</h3>
+                        </div>
+                    </div>
+            
+                    <div class="product-frame">
+                        <img src="assets\images\categories\image_3.jpg" alt="Mushroom Lamp">
+                        <div class="price">$39.99</div>
+                        <div class="label-container">
+                            <h3 class="product-name">Mushroom Lamp</h3>
+                        </div>
+                    </div>
                 </div>
-                <div class="category-card">
-                    <a href="categories.html"><img src="assets/images/categories/image_2.png" alt="Jeans" class="category-image"></a>
-                </div>
-                <div class="category-card">
-                    <a href="categories.html"><img src="assets/images/categories/image_3.png" alt="Shirts" class="category-image"></a>
-                </div>
-            </div>
             <div class="categories-grid-bottom">
-                <div class="category-card">
-                    <a href="categories.html"><img src="assets/images/categories/image_4.png" alt="Sneakers" class="category-image"></a>
-                </div>
-                <div class="category-card">
-                    <a href="categories.html"><img src="assets/images/categories/image_5.png" alt="Polos" class="category-image"></a>
-                </div>
-                <div class="category-card">
-                    <a href="categories.html"><img src="assets/images/categories/image_6.png" alt="T-shirts" class="category-image"></a>
-                </div>
-                <div class="category-card">
-                    <a href="categories.html"><img src="assets/images/categories/image_7.png" alt="Supima" class="category-image"></a>
-                </div>
+                    <div class="product-frame">
+                        <img src="assets\images\categories\image_1.jpg" alt="Device Stand">
+                        <div class="price">$29.99</div>
+                        <div class="label-container">
+                            <h3 class="product-name">Device Stand</h3>
+                        </div>
+                    </div>
+            
+                    <div class="product-frame">
+                        <img src="assets\images\categories\image_2.jpg" alt="AirPods Case">
+                        <div class="price">$19.99</div>
+                        <div class="label-container">
+                            <h3 class="product-name">AirPods Case</h3>
+                        </div>
+                    </div>
+            
+                    <div class="product-frame">
+                        <img src="assets\images\categories\image_3.jpg" alt="Mushroom Lamp">
+                        <div class="price">$39.99</div>
+                        <div class="label-container">
+                            <h3 class="product-name">Mushroom Lamp</h3>
+                        </div>
+                    </div>
+                    <div class="product-frame">
+                        <img src="assets\images\categories\image_4.jpg" alt="Mushroom Lamp">
+                        <div class="price">$39.99</div>
+                        <div class="label-container">
+                            <h3 class="product-name">Mushroom Lamp</h3>
+                        </div>
+                    </div>
             </div>
         </section>
     </main>
