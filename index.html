@@ -33,6 +33,136 @@ custom designs -->
 <body>
     <header>
         <style>
+            
+            .header {
+    background: var(--white);
+    box-shadow: var(--shadow-sm);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+            .header-top {
+    background: #4A3F9F;
+    color: var(--white);
+    text-align: center;
+    padding: 8px;
+    font-size: 0.9rem;
+}
+            .logo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    text-decoration: none;
+    color: var(--text-dark);
+}
+.logo img {
+    height: 40px;
+}
+.nav-menu {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-link:hover {
+            background: var(--background);
+            color: #7B6CF6;;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: #7B6CF6;;
+            transition: var(--transition);
+        }
+
+        .nav-link:hover::after {
+            width: 80%;
+        }
+
+        .nav-icons {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .icon-btn {
+            position: relative;
+            background: none;
+            border: none;
+            color: var(--text-dark);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .icon-btn:hover {
+            color: #7B6CF6;;
+            transform: translateY(-2px);
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: #7B6CF6;;
+            color: var(--white);
+            font-size: 0.75rem;
+            padding: 2px 6px;
+            border-radius: 50%;
+            font-weight: 600;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text-dark);
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: #4A3F9F;;
+                padding: 1rem;
+                flex-direction: column;
+                gap: 1rem;
+                box-shadow: var(--shadow-md);
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .nav-link::after {
+                display: none;
+            }
+        }
         .card-container, .categories-grid-top, .categories-grid-bottom {
             display: grid;
             gap: 2rem;
@@ -269,11 +399,18 @@ custom designs -->
         transform: translateX(-50%) scale(1.2);
     }
 }
-
             </style>
-            
+
+<header class="header">
+    <div class="header-top">
+        Free shipping on orders above ₹999 | Shop Now!
+    </div>
 
             <nav class="top-nav">
+                <a href="/" class="logo">
+                    <img src="assets/images/logo.png" alt="ArcFusion Logo">
+    
+                </a>
                 <a href="#" class="nav-link">
                     <span>Home</span>
                     <div class="nozzle"></div>
@@ -294,6 +431,21 @@ custom designs -->
                     <div class="nozzle"></div>
                     <div class="fill"></div>
                 </a>
+                <div class="nav-icons">
+                <button class="icon-btn">
+                    <i class="fas fa-search fa-lg"></i>
+                </button>
+                <button class="icon-btn">
+                    <i class="far fa-user fa-lg"></i>
+                </button>
+                <button class="icon-btn">
+                    <i class="fas fa-shopping-cart fa-lg"></i>
+                    <span class="cart-count">2</span>
+                </button>
+                <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
             </nav>
     </header>
 
