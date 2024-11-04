@@ -1,0 +1,14 @@
+{
+    "name": "onlyf/project-new",
+    "description": "E-commerce website",
+    "type": "project",
+    "require": {
+        "mongodb/mongodb": "^1.20"
+    },
+    "license": "mit",
+    "authors": [
+        {
+            "name": "y"
+        }
+    ]
+}
