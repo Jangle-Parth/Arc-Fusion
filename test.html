@@ -1,258 +1,156 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ArcFusion - Premium Lifestyle Products</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary: #7B6CF6;
-            --secondary: #4A3F9F;
-            --accent: #9D8DF7;
-            --background: #F3F1FF;
-            --text-dark: #2D2A45;
-            --text-light: #6E6B85;
-            --white: #FFFFFF;
-            --shadow-sm: 0 2px 4px rgba(123, 108, 246, 0.1);
-            --shadow-md: 0 4px 6px rgba(123, 108, 246, 0.15);
-            --shadow-lg: 0 8px 16px rgba(123, 108, 246, 0.2);
-            --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Checkout</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+	<style>
+		.card {
+			box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
+			padding-bottom: 0px;
+			border-radius: 14px;
+			float: right;
+		}
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+		.bank {
+			text-align: center;
+			padding: 20px;
+			border-top: 1px solid #efefef;
 
-        body {
-            font-family: 'Inter', sans-serif;
-            background: var(--background);
-            color: var(--text-dark);
-            line-height: 1.6;
-        }
+		}
 
-        /* Enhanced Header Styles */
-        .header {
-            background: var(--white);
-            box-shadow: var(--shadow-sm);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
+		.bank:nth-child(3) {
+			border-right: 1px solid #efefef;
+		}
 
-        .header-top {
-            background: var(--secondary);
-            color: var(--white);
-            text-align: center;
-            padding: 8px;
-            font-size: 0.9rem;
-        }
+		.bank:nth-child(1) {
+			/* border-right: 1px solid #efefef; */
+		}
+		.bank:nth-child(5) {
+			border-right: 1px solid #efefef;
+		}
+		.bank:nth-child(7) {
+			border-right: 1px solid #efefef;
+		}
 
-        .nav-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+		.icon {
+			margin: 0 auto;
+		}
 
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            text-decoration: none;
-            color: var(--text-dark);
-        }
+		.btext {
+			margin-top: 10px
+		}
 
-        .logo img {
-            height: 40px;
-        }
-
-        .logo-text {
-            font-size: 1.5rem;
-            font-weight: 700;
-            background: linear-gradient(45deg, var(--primary), var(--accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .nav-menu {
-            display: flex;
-            gap: 2rem;
-            align-items: center;
-        }
-
-        .nav-link {
-            text-decoration: none;
-            color: var(--text-dark);
-            font-weight: 500;
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
-            transition: var(--transition);
-            position: relative;
-        }
-
-        .nav-link:hover {
-            background: var(--background);
-            color: var(--primary);
-        }
-
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 0;
-            height: 2px;
-            background: var(--primary);
-            transition: var(--transition);
-        }
-
-        .nav-link:hover::after {
-            width: 80%;
-        }
-
-        .nav-icons {
-            display: flex;
-            gap: 1.5rem;
-            align-items: center;
-        }
-
-        .icon-btn {
-            position: relative;
-            background: none;
-            border: none;
-            color: var(--text-dark);
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .icon-btn:hover {
-            color: var(--primary);
-            transform: translateY(-2px);
-        }
-
-        .cart-count {
-            position: absolute;
-            top: -8px;
-            right: -8px;
-            background: var(--primary);
-            color: var(--white);
-            font-size: 0.75rem;
-            padding: 2px 6px;
-            border-radius: 50%;
-            font-weight: 600;
-        }
-
-        /* Mobile Menu */
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            color: var(--text-dark);
-            cursor: pointer;
-        }
-
-        @media (max-width: 768px) {
-            .mobile-menu-btn {
-                display: block;
-            }
-
-            .nav-menu {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background: var(--white);
-                padding: 1rem;
-                flex-direction: column;
-                gap: 1rem;
-                box-shadow: var(--shadow-md);
-            }
-
-            .nav-menu.active {
-                display: flex;
-            }
-
-            .nav-link::after {
-                display: none;
-            }
-        }
-
-        /* Rest of your existing styles... */
-    </style>
+		.bank {
+			cursor: pointer;
+		}
+		.gradient{
+			background-image: linear-gradient( 83.2deg,  rgba(150,93,233,1) 10.8%, rgba(99,88,238,1) 94.3% );
+		}
+		.container{
+			border-radius: 20px;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			padding: 20px;
+			border: 1px solid #ddd;
+		}
+		 
+		h4{
+			color: rgba(0, 0, 0, 0.5);
+		}
+		 
+		 
+		
+	</style>
 </head>
+
 <body>
-    <header class="header">
-        <div class="header-top">
-            Free shipping on orders above ₹999 | Shop Now!
-        </div>
-        <nav class="nav-container">
-            <a href="/" class="logo">
-                <img src="/api/placeholder/40/40" alt="ArcFusion Logo">
-                <span class="logo-text">ArcFusion</span>
-            </a>
-            
-            <div class="nav-menu">
-                <a href="/" class="nav-link">Home</a>
-                <a href="/shop" class="nav-link">Shop</a>
-                <a href="/collections" class="nav-link">Collections</a>
-                <a href="/about" class="nav-link">About</a>
-                <a href="/contact" class="nav-link">Contact</a>
-            </div>
+	<div class="container  ">
+		<div class="row">
 
-            <div class="nav-icons">
-                <button class="icon-btn">
-                    <i class="fas fa-search fa-lg"></i>
-                </button>
-                <button class="icon-btn">
-                    <i class="far fa-user fa-lg"></i>
-                </button>
-                <button class="icon-btn">
-                    <i class="fas fa-shopping-cart fa-lg"></i>
-                    <span class="cart-count">2</span>
-                </button>
-                <button class="mobile-menu-btn">
-                    <i class="fas fa-bars"></i>
-                </button>
-            </div>
-        </nav>
-    </header>
+			<div class="col  ">
+				<div class="row">
+					<h1>Demo of Cashfree Hosted Checkout</h1>
+				</div>
+			</div>
+			<hr>
+			<div class="col offset-1 col-10">
 
-    <!-- Rest of your existing content... -->
+			</div>
+		</div>
+		<div class="row">
+			<div class="col col-lg-8 col-sm-12">
+				<div class="row">
+					<h4>Payment Session ID</h4>
+					<div class="col">
+						<textarea name="" id="paymentSessionId" class="form-control"></textarea>
+						<span class="form-text text-muted">Don't have a paymentSessionId? Get a sample one <a href="https://test.cashfree.com/pgappsdemos/sample-psi.php" target="_blank">here</a> for sandbox mode</span>
+					</div>
+				</div>
 
-    <script>
-        // Mobile Menu Toggle
-        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-        const navMenu = document.querySelector('.nav-menu');
+				<div class="row mt-3">
+					<h4>Return URL <span class="badge h6 bg-danger">Required</span></h4>
+					<div class="col">
+						<textarea name="" id="returnUrl" class="form-control">https://test.cashfree.com/pgappsdemos/v3success.php?myorder={order_id}</textarea>
+						<span class="form-text text-muted">Don't have a paymentSessionId? Get a sample one <a href="https://test.cashfree.com/pgappsdemos/sample-psi.php" target="_blank">here</a> for sandbox mode</span>
+					</div>
+				</div>
+				<div class="row mt-4">
+					<div class="col ">
+						<p class="alert" id="paymentMessage">
 
-        mobileMenuBtn.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-        });
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="col col-lg-4 col-sm-10">
+				<div class=" ">
+					<div class="card w-100"  >
+						<div class="card-body w-100 pb-0" style="">
+							<h5 class="card-title">
+								Checkout
+							</h5>
 
-        // Close mobile menu when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!e.target.closest('.nav-container')) {
-                navMenu.classList.remove('active');
-            }
-        });
+							<div class="row">
+								<div class="col-12 bank col" bfor="qr">
+									<button class="btn btn-block btn-full w-100 btn-primary" id="checkout">
+										Submit
+									</button>
+								</div>
+								 
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 
-        // Smooth scroll for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-    </script>
+		</div>
+	</div>
+	<script src="https://sdk.cashfree.com/js/v3/cashfree.js"></script>
+	<script>
+		const cashfree = Cashfree({mode:"sandbox"});
+		const paymentMessage = document.getElementById("paymentMessage");
+		document.getElementById("checkout").addEventListener("click", function(){
+			paymentMessage.innerText = "";
+			paymentMessage.classList.remove("alert-danger");
+			paymentMessage.classList.remove("alert-success");
+			cashfree.checkout({
+				paymentSessionId: document.getElementById("paymentSessionId").value,
+				returnUrl: document.getElementById("returnUrl").value,
+				redirectTarget: "_blank"
+			}).then(function(){
+				console.log("on going redirection");
+			});
+			
+			
+
+		})
+	</script>
 </body>
+
 </html>
