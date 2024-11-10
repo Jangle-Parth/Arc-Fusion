@@ -31,18 +31,13 @@ ini_set('display_errors', 1);
 // Set content type to JSON
 header('Content-Type: application/json');
 
-// Only process POST requests
-if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    echo json_encode([
-        'success' => false,
-        'message' => 'Invalid request method'
-    ]);
-    exit;
-}
-
 try {
     // Basic validation
     $errors = [];
+    
+    if (empty($_POST['fullname'])) {
+        $errors['fullname'] = 'Full name is required';
+    }
     
     if (empty($_POST['email'])) {
         $errors['email'] = 'Email is required';
@@ -75,51 +70,43 @@ try {
     $db = $mongoClient->$database;
     $collection = $db->users;
 
-    // Find user by email
-    $user = $collection->findOne(['email' => strtolower($_POST['email'])]);
+    // Check for existing email
+    $existingEmail = $collection->findOne(['email' => strtolower($_POST['email'])]);
+    if ($existingEmail) {
+        echo json_encode([
+            'success' => false,
+            'errors' => ['email' => 'Email already registered'],
+            'message' => 'Email already registered'
+        ]);
+        exit;
+    }
+
+    // Create user document
+    $userDocument = [
+        'fullname' => htmlspecialchars($_POST['fullname']),
+        'email' => strtolower($_POST['email']),
+        'username' => htmlspecialchars($_POST['username']),
+        'password' => password_hash($_POST['password'], PASSWORD_DEFAULT),
+        'created_at' => new MongoDB\BSON\UTCDateTime(),
+        'updated_at' => new MongoDB\BSON\UTCDateTime(),
+        'active' => true
+    ];
+
+    // Insert the document
+    $insertResult = $collection->insertOne($userDocument);
     
-    if (!$user) {
+    if ($insertResult->getInsertedCount() > 0) {
+        $_SESSION['user_id'] = (string)$insertResult->getInsertedId();
+        $_SESSION['username'] = $_POST['username'];
+        
         echo json_encode([
-            'success' => false,
-            'message' => 'Invalid email or password'
+            'success' => true,
+            'message' => 'Registration successful! Redirecting...',
+            'redirect' => 'profile.php'
         ]);
-        exit;
+    } else {
+        throw new Exception('Failed to create account');
     }
-
-    // Verify password
-    if (!password_verify($_POST['password'], $user->password)) {
-        echo json_encode([
-            'success' => false,
-            'message' => 'Invalid email or password'
-        ]);
-        exit;
-    }
-
-    // Check if account is active
-    if (!$user->active) {
-        echo json_encode([
-            'success' => false,
-            'message' => 'Your account is currently inactive. Please contact support.'
-        ]);
-        exit;
-    }
-
-    // Set session variables
-    $_SESSION['user_id'] = (string)$user->_id;
-    $_SESSION['username'] = $user->username;
-    $_SESSION['fullname'] = $user->fullname;
-
-    // Update last login timestamp
-    $collection->updateOne(
-        ['_id' => $user->_id],
-        ['$set' => ['last_login' => new MongoDB\BSON\UTCDateTime()]]
-    );
-
-    echo json_encode([
-        'success' => true,
-        'message' => 'Login successful! Redirecting...',
-        'redirect' => 'profile.php'
-    ]);
 
 } catch (MongoDB\Driver\Exception\ConnectionTimeoutException $e) {
     echo json_encode([
